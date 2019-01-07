@@ -1,1 +1,1 @@
-# rubyrush-
+# rubyrush изучение курсов
