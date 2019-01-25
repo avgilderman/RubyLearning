@@ -8,6 +8,11 @@ def sklonenie(number, krokodil, krokodila, krokodilov)
   end
 
   ostatok = number % 10
+  ostatoknew = number % 100
+
+  if ostatoknew >= 11 && ostatoknew <= 14
+    return krokodilov
+  end
 
   if ostatok == 1
     return krokodil
