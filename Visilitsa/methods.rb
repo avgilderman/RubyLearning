@@ -18,7 +18,10 @@ def get_user_input
 end
 
 def check_result(user_input, letters, good_letters, bad_letters)
-	#возвращаемое значение:	1, если буква, которую ввёл игрок есть в слове и игрок отгадал всё слово, -1, если буквы, которую ввёл игрок, нет в загаданном слове, 0 во всех других случаях
+	#возвращаемое значение:	1 - буква есть в слове
+	#и игрок отгадал всё слово
+	#-1 - буквы нет в загаданном слове
+	#0 - во всех других случаях
 	if good_letters.include?(user_input) || bad_letters.include?(user_input)
 		return 0
 	end
@@ -34,4 +37,4 @@ else
 	return -1
 end
 end
-
+test
