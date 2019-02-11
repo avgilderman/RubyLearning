@@ -49,6 +49,20 @@ else
 end
 end
 
+#для отображения промежуточного статуса игры 
+#для вывода результата в конце игры (проигрыш или выигрыш).
+def print_status(user_input, letters, good_letters, bad_letters)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
