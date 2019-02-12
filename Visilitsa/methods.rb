@@ -51,46 +51,32 @@ end
 
 #для отображения промежуточного статуса игры 
 #для вывода результата в конце игры (проигрыш или выигрыш).
-def print_status(user_input, letters, good_letters, bad_letters)
+def print_status(letters, good_letters, bad_letters, errors)
+	puts "/nСлово: " + get_word_for_print(letters, good_letters)
+	puts "Ошибки (#{errors}): #{bad_letters.join(", ")}"
+	if errors >= 7
+		puts "Вы проиграли"
+	else
+		if letters.uniq.size == good_letters.uniq.size
+			puts "Поздравляем, вы выиграли!"
+		else
+			puts "У вас осталось попыток: " + (7 - errors).to_s
+		end
+	end
+end
 
+#вывод загаданного слова как в «Поле чудес»
+def get_word_for_print(letters, good_letters)
+	results = ""
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	for item in letters do
+		if good_letters.include?(item)
+			result += item + " "
+		else
+			result += "__ "
+		end
+	end
+	return results
+end
 
 
