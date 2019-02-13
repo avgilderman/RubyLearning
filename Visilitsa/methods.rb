@@ -18,41 +18,39 @@ def get_user_input
 	return letter		
 end
 
+# 1 отгадал всё слово, 
+# -1 буквы нет в слове 
+# 0 Угадал/повтор
 def check_result(user_input, letters, good_letters, bad_letters)
-	#user_input — введённая пользователем буква, 
-	#letters — массив букв загаданного слова, 
-	#good_letters — массив отгаданных букв, 
-	#bad_letters — массив букв, которые пользователь вводил, но которых нет в слове
-	#возвращаемое значение:	
-	#1, если игрок отгадал всё слово, 
-	#-1, если буквы, которую ввёл игрок, нет в загаданном слове, 
-	#0 если угадал букву, но не слово, если пользователь вводит букву, которую уже вводил.)
-	
 	#если пользователь вводит букву, которую уже вводил
 	if good_letters.include?(user_input) || bad_letters.include?(user_input)
 		return 0
 	end
-	#есть ли введённая буква в загаданном слове.
+		
+		#введённая буква есть в слове
 	if letters.include?(user_input)
-		#отправить правильную букву в массив угаданных
-		good_letters << user_input
-	#если отгадал всё слово
-	if good_letters.uniq.size == letters.uniq.size
-		return 1
+		good_letters << user_input	
+		
+			#если введеная буква есть в слове, и отгадано всё слово
+		if good_letters.uniq.size == letters.uniq.size
+			return 1
+		else
+			#если буква есть в слове, но всё слово еще не отгадано
+			return 0
+		end
 	else
-		#если не отгадал
-		return 0
-	end
-else
+	#введеной буквы нет в слове
 	bad_letters << user_input
 	return -1
-end
+	end
 end
 
-#для отображения промежуточного статуса игры 
-#для вывода результата в конце игры (проигрыш или выигрыш).
+#отображения промежуточного статуса игры 
+#вывод результата в конце игры (проигрыш или выигрыш).
 def print_status(letters, good_letters, bad_letters, errors)
-	puts "/nСлово: " + get_word_for_print(letters, good_letters)
+	#отобразить слово как в поле чудес
+	puts "/nСлово: " + get_word_for_print(letters, good_letters) 
+	#отобразить количество ошибок и буквы, которых нет в слове
 	puts "Ошибки (#{errors}): #{bad_letters.join(", ")}"
 	if errors >= 7
 		puts "Вы проиграли"
@@ -78,5 +76,3 @@ def get_word_for_print(letters, good_letters)
 	end
 	return results
 end
-
-
