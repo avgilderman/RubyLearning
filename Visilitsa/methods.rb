@@ -76,3 +76,7 @@ def get_word_for_print(letters, good_letters)
 	end
 	return results
 end
+
+def cls
+	system "clear" or system "cls"
+end
