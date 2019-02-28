@@ -9,6 +9,7 @@ def get_letters
 		return slovo.encode("UTF-8").split("")
 end
 
+
 #форматируем букву, которую ввёл пользователь	
 def get_user_input
 	letter = ""
@@ -17,6 +18,7 @@ def get_user_input
 	end
 	return letter		
 end
+
 
 # 1 отгадал всё слово, 
 # -1 буквы нет в слове 
@@ -29,8 +31,7 @@ def check_result(user_input, letters, good_letters, bad_letters)
 		
 		#введённая буква есть в слове
 	if letters.include?(user_input)
-		good_letters << user_input	
-		
+		good_letters << user_input			
 			#если введеная буква есть в слове, и отгадано всё слово
 		if good_letters.uniq.size == letters.uniq.size
 			return 1
@@ -44,6 +45,7 @@ def check_result(user_input, letters, good_letters, bad_letters)
 	return -1
 	end
 end
+
 
 #отображения промежуточного статуса игры 
 #вывод результата в конце игры (проигрыш или выигрыш).
@@ -63,10 +65,10 @@ def print_status(letters, good_letters, bad_letters, errors)
 	end
 end
 
+
 #вывод загаданного слова как в «Поле чудес»
 def get_word_for_print(letters, good_letters)
 	results = ""
-
 	for item in letters do
 		if good_letters.include?(item)
 			result += item + " "
@@ -76,6 +78,7 @@ def get_word_for_print(letters, good_letters)
 	end
 	return results
 end
+
 
 def cls
 	system "clear" or system "cls"
